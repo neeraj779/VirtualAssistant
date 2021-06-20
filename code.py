@@ -48,7 +48,7 @@ def takeCommand():
             query = r.recognize_google(audio, language="en-in")
             print(f"User said {query}\n")
         except Exception as error:
-            print('Your last command couldn\'t be heard ! I can understand commands open google, play songs, open gmail, open website xyz.com and tell me a joke')
+            print("Your last command couldn\'t be heard!")
             return "None"
         return query
 
@@ -59,6 +59,7 @@ if __name__ == "__main__":
         if "alexa" in starting:
             wish_me()
             break
+
 while True:
     query = takeCommand().lower()
     if "wikipedia" in query:
@@ -104,10 +105,10 @@ while True:
         url = query.replace("search", "")
         webbrowser.open_new_tab(url)
 
-    elif "tell me" in query:
+    elif "what is" in query:
         with open("wolframalpha_api_id.txt", "r") as api_key:
             api_id = api_key.read()
-        question = query.replace("tell me", "")
+        question = query.replace("what is", "")
         client = wolframalpha.Client(api_id)
         res = client.query(question)
         answer = next(res.results).text # to make sure wolramalpha gives answer in text and not in graph and all
