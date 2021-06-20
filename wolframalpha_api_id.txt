@@ -1,1 +1,0 @@
-#place your wolframalpha api id here.
